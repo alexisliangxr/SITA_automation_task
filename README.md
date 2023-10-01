@@ -16,7 +16,7 @@ $ pwd
 ~/src/SITA_automation_task
 $ python3 -m venv venv
 $ ls -l
-README
+README.md
 locators.py
 page.py
 requirements.txt
