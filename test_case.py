@@ -23,7 +23,7 @@ class PythonSearch(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.get("https://sitatesting.github.io/AutomationTest")
         warnings.simplefilter('ignore', ResourceWarning)
-    
+
     def test_web_automation(self):
         """Tests make you reservation feature. Go to the Home page. 
            Click on “Explore More" beside “Caribbean” under visit 
@@ -33,7 +33,7 @@ class PythonSearch(unittest.TestCase):
            Click on Make your Reservation Now.
         """
 
-        #Load the main page. In this case the home page of 
+        #Load the main page. In this case the home page of
         #https://sitatesting.github.io/AutomationTest/index.html.
         main_page = page.MainPage(self.driver)
         main_page.click_home_button()
@@ -45,14 +45,14 @@ class PythonSearch(unittest.TestCase):
         #Check if "Explore More for CARIBBEAN" is found
         self.assertTrue(main_page.is_explore_button_matches(), "Explore more button doesn't match.")
         logger.info("Explore more button clicked successfully")
-        
+
         #Find "Kingston" and click on "make a reservation"
         find_page = page.FindResultsPage(self.driver)
         find_page.click_make_reservation()
         #Check if the reservation form is opened
         self.assertTrue(find_page.is_reservation_form(), "Make a reservation button doesn't match.")
         logger.info("Make a reservation page opened successfully")
-               
+
         #Fill in the form and submit the reservation
         reservation_page = page.MakeReservationPage(self.driver)
         #Fill in name, phone, guest number, destination, check in date
@@ -68,7 +68,7 @@ class PythonSearch(unittest.TestCase):
         reservation_page.click_make_reservation_now()
         self.assertTrue(reservation_page.is_submitted_form(), "You didn't submit successful.")
         logger.info("Reservation submitted successfully")
-        
+
     def tearDown(self):
         self.driver.close()
 

@@ -3,7 +3,7 @@ from selenium.webdriver.support.select import Select
 
 from locators import MainPageLocators, FindResultsPageLocators, MakeReservationPageLocators
 
-class BasePage(object):
+class BasePage():
     """Base class to initialize the base page and actions that will be called from all
     pages"""
 
@@ -40,7 +40,7 @@ class MainPage(BasePage):
         """Verifies that the hardcoded text "Sita Automation Test" appears in page title"""
 
         return "Sita Automation Test" in self.driver.title
-   
+
     def click_home_button(self):
         """Triggers the process"""
 
@@ -59,18 +59,18 @@ class MainPage(BasePage):
 
 class FindResultsPage(BasePage):
     """Find results page action methods come here"""
-    
+
     def click_make_reservation(self):
         """Select the city Kingston 
            and click on Make A Reservation"""
 
         self.hidden_button(*FindResultsPageLocators.MAKE_A_RESERVATION)
-    
+
     def is_reservation_form(self):
         """ Probably should go to the reservation page"""
-        
+
         return "Make Your Reservation Now" in self.driver.page_source
-    
+
 
 class  MakeReservationPage(BasePage):
     """Fill in the form and submit the reservation"""
@@ -109,3 +109,4 @@ class  MakeReservationPage(BasePage):
         """ Probably should go to the next page"""
 
         return "No results found." not in self.driver.page_source
+    
