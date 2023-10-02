@@ -11,22 +11,22 @@ class BasePage():
         self.driver = driver
 
     def click_button(self, *locator):
-        """click button"""
+        """Click button"""
 
         self.driver.find_element(*locator).click()
 
     def hidden_button(self, *locator):
-        """click hidden button"""
+        """Click hidden button"""
 
         self.driver.find_element(*locator).send_keys(Keys.ENTER)
 
     def send_text(self, item, *locator):
-        """send text"""
+        """Send text"""
 
         self.driver.find_element(*locator).send_keys(item)
 
     def select_list(self, index, *locator):
-        """select item in select list"""
+        """Select item in select list"""
 
         element = self.driver.find_element(*locator)
         new_element = Select(element)
@@ -67,7 +67,7 @@ class FindResultsPage(BasePage):
         self.hidden_button(*FindResultsPageLocators.MAKE_A_RESERVATION)
 
     def is_reservation_form(self):
-        """ Probably should go to the reservation page"""
+        """Probably should go to the reservation page"""
 
         return "Make Your Reservation Now" in self.driver.page_source
 
@@ -106,7 +106,7 @@ class  MakeReservationPage(BasePage):
         self.hidden_button(*MakeReservationPageLocators.SUBMIT)
 
     def is_submitted_form(self):
-        """ Probably should go to the next page"""
+        """Probably should go to the next page"""
 
         return "No results found." not in self.driver.page_source
     
